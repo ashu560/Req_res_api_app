@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, unused_local_variable
+// ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -55,89 +55,113 @@ class _MyHomepageState extends State<MyHomepage> {
           "HiDoc App",
           style: TextStyle(color: Colors.black),
         ),
-        toolbarHeight: 150,
+        toolbarHeight: 70,
         backgroundColor: Colors.transparent,
         elevation: 0.0,
         scrolledUnderElevation: 20,
       ),
-      body: Stack(children: [
-        Positioned(
-          top: -350,
-          left: -250,
-          child: SizedBox(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            child: Image.asset(
-              'assets/bg.png', // Replace with your image path
-              fit: BoxFit.contain,
-              opacity: const AlwaysStoppedAnimation(0.5),
+      body: Stack(
+        children: [
+          Positioned(
+            top: -350,
+            left: -250,
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              child: Image.asset(
+                'assets/bg.png', // Replace with your image path
+                fit: BoxFit.contain,
+                opacity: const AlwaysStoppedAnimation(0.5),
+              ),
             ),
           ),
-        ),
-        ListView.builder(
-          scrollDirection: Axis.vertical,
-          shrinkWrap: true,
-          // controller: ScrollController(initialScrollOffset: 0.0),
-          itemCount: newsList.length,
-          itemBuilder: (context, index) {
-            final newsItem = newsList[index];
-            final articleImg =
-                newsItem['articleImg'] ?? ''; // Provide a default value if null
-            return Column(
+          SingleChildScrollView(
+            child: Column(
               children: [
-                // Image.network(
-                //   newsItem['articleImg'],
-                //   cacheHeight: 350,
-                //   cacheWidth: 350,
-                // ),
-                Container(
-                  height: 350,
-                  width: 350,
-                  padding: EdgeInsets.all(
-                    20,
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: 150,
                   ),
-                  decoration: BoxDecoration(
-                    color: Colors.black12,
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(30),
+                  child: Container(
+                    alignment: AlignmentDirectional.center,
+                    width: 300,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: Colors.amber.withOpacity(0.4),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(30),
+                      ),
+                    ),
+                    child: Text(
+                      "Tranding Bulletin",
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w800,
+                        color: Colors.black,
+                        fontSize: 32,
+                      ),
                     ),
                   ),
-                  alignment: Alignment.center,
-                  child: Column(
-                    children: [
-                      Text(
-                        newsItem['articleTitle'].toString(),
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                          fontSize: 22,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        newsItem['articleDescription'].toString(),
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey,
-                          fontSize: 16,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                    ],
-                  ),
                 ),
-                SizedBox(
-                  height: 30,
+                ListView.builder(
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: newsList.length,
+                  itemBuilder: (context, index) {
+                    final newsItem = newsList[index];
+                    final articleImg = newsItem['articleImg'] ?? '';
+                    return Column(
+                      children: [
+                        Container(
+                          height: 350,
+                          width: 350,
+                          padding: EdgeInsets.all(20),
+                          decoration: BoxDecoration(
+                            color: Colors.black12,
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(30),
+                            ),
+                          ),
+                          alignment: Alignment.center,
+                          child: Column(
+                            children: [
+                              Text(
+                                newsItem['articleTitle'].toString(),
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                  fontSize: 22,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                newsItem['articleDescription'].toString(),
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.grey,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 30,
+                        ),
+                      ],
+                    );
+                  },
                 ),
               ],
-            );
-          },
-        ),
-      ]),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
