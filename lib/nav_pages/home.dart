@@ -1,5 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_local_variable
-
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_local_variable, unused_field
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:http/http.dart' as http;
@@ -40,57 +39,6 @@ class _MyHomepageState extends State<MyHomepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 15.0,
-          vertical: 20.0,
-        ),
-        child: GNav(
-          textStyle: TextStyle(color: Colors.black),
-          activeColor: Colors.amber,
-          tabBackgroundColor: Colors.grey.shade400,
-          padding: EdgeInsets.all(10.0),
-          gap: 10.0,
-          tabs: [
-            GButton(
-              icon: Icons.home,
-              text: 'Home',
-            ),
-            GButton(
-              icon: Icons.favorite_border,
-              text: 'Links',
-            ),
-            GButton(
-              icon: Icons.person,
-              text: 'User',
-            ),
-            GButton(
-              icon: Icons.verified_user,
-              text: 'Verify',
-            ),
-          ],
-        ),
-      ),
-      // bottomNavigationBar: CurvedNavigationBar(
-      //   items: [
-      //     Icon(Icons.add, size: 30),
-      //     Icon(Icons.list, size: 30),
-      //     Icon(Icons.compare_arrows, size: 30),
-      //     Icon(Icons.call_split, size: 30),
-      //     Icon(Icons.perm_identity, size: 30),
-      //   ],
-      //   color: Colors.amber.withOpacity(0.4),
-      //   buttonBackgroundColor: Colors.white,
-      //   backgroundColor: Colors.white,
-      //   animationCurve: Curves.easeInOut,
-      //   animationDuration: Duration(milliseconds: 300),
-      //   onTap: (index) {
-      //     setState(() {
-      //       _page = index;
-      //     });
-      //   },
-      //   letIndexChange: (index) => true,
-      // ),
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         leading: IconButton(

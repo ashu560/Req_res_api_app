@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:doctors/home.dart';
+import 'package:doctors/btm_nav_bar.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomepage(),
+      home: const navbar(),
     );
   }
 }
